@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { isNumeric } from "./helpers";
+
 class ImpresorLCD {
   constructor() {
     this.CARACTER_VERTICAL = "|";
@@ -233,11 +233,11 @@ class ImpresorLCD {
    */
 }
 
-const printNumber = (size, numeroImp, espacio) => {
+export const printNumber = (digitSize, numberToPrint, espacio) => {
   let pivotX = 0;
   digitos = [];
 
-  this.size = size;
+  this.size = digitSize;
 
   // Calcula el numero de filas cada digito
   this.filasDig = 2 * this.size + 3;
@@ -251,13 +251,13 @@ const printNumber = (size, numeroImp, espacio) => {
   // Calcula el total de columnas de la matriz en la que se almacenaran los
   // digitos
   this.totalColum =
-    this.columDig * numeroImp.length() + espacio * numeroImp.length();
+    this.columDig * numberToPrint.length() + espacio * numberToPrint.length();
 
   // crea matriz para almacenar los numero a imprimir
   this.matrizImpr = new String[this.totalFilas][this.totalColum]();
 
   // crea el arreglo de digitos
-  digitos = numeroImp.toCharArray();
+  digitos = numberToPrint.toCharArray();
 
   // Inicializa matriz
   for (let i = 0; i < this.totalFilas; i++) {
@@ -301,48 +301,5 @@ const printNumber = (size, numeroImp, espacio) => {
       System.out.print(this.matrizImpr[i][j]);
     }
     System.out.println();
-  }
-};
-
-const getParameters = command => {
-  if (!command.includes(",")) {
-    throw new Error(`Cadena ${command} no contiene caracter ,`);
-  }
-  return command.split(",");
-};
-
-const validateParameters = (parameters, command) => {
-  if (parameters.length > 2) {
-    throw new Error(`Cadena ${command} contiene más caracter ,`);
-  }
-  if (parameters.length < 2) {
-    throw new Error(`Cadena ${command} no contiene los parametros requeridos`);
-  }
-};
-const getDigitSize = commandParameter => {
-  if (isNumeric(commandParameter)) {
-    return parseFloat(commandParameter);
-  } else {
-    throw new Error(`Parametro Size [ ${commandParameter} ] no es un numero`);
-  }
-};
-
-const validateDigitSize = () => {
-  if (digitSize < 1 || digitSize > 10) {
-    throw new Error(
-      "El parametro size [" + digitSize + "] debe estar entre 1 y 10"
-    );
-  }
-};
-
-export const toProcess = (command, digitSpace) => {
-  try {
-    let commandParameters = getParameters(command);
-    validateParameters(commandParameters, command);
-    let digitSize = getDigitSize(commandParameters[0]);
-    validateDigitSize(digitSize);
-    printNumber(digitSize, commandParameters[1], digitSpace);
-  } catch (error) {
-    console.error(chalk.bgRed("Error: ", error.message));
   }
 };

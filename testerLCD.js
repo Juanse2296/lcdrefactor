@@ -1,5 +1,6 @@
 import readline from "readline";
-import { toProcess } from "./impresorLCD";
+import { toProcess } from "./processCommand";
+import { printNumber } from './impresorLCD';
 import chalk from "chalk";
 import { isEmpty, isNumber } from "./helpers";
 
@@ -36,7 +37,8 @@ const getDigitSpace = answer => {
 const processEachCommand = (commandsList, digitSpace) => {
   commandsList.forEach(command => {
     try {
-      toProcess(command, digitSpace);
+      const processResult = toProcess(command, digitSpace);
+      printNumber(...processResult, digitSpace);
     } catch (err) {
       console.error(err);
     }
@@ -55,7 +57,7 @@ const app = async () => {
         commandsList.push(processCommands);
     } while (processCommands !== finishProcessCommands);
     console.log(chalk.magenta("lista de comandos: ", commandsList));
-    processEachCommand(commandsList, digitSpace);
+    processEachCommand(commandsList);
   } catch (error) {
     console.error(chalk.bgRed("Error: ", error.message));
     app();
