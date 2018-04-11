@@ -1,0 +1,17 @@
+{
+  "name": "lcdrefactor",
+  "version": "1.0.0",
+  "description": "lcdrafactor in JavaScript",
+  "main": "impresorLCD.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node testerLCD.js",
+    "start": "node testerLCD.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juanse2296",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
