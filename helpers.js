@@ -1,2 +1,3 @@
-export const isNumber = val => typeof val === 'number';
-export const isEmpty = val => val == null || !(Object.keys(val) || val).length;
+export const isNumber = value => typeof value === 'number';
+export const isEmpty = value => value == null || !(Object.keys(value) || value).length;
+export const isNumeric = value => !isNaN(parseFloat(value)) && isFinite(value)
