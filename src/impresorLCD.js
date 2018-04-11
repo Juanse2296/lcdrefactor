@@ -22,7 +22,7 @@ export const printNumber = ({ digitSize, numberToPrint }, digitSpace) => {
 
   matrixToPrint = Array(totalRows)
     .fill()
-    .map(() => Array(totalColumns).fill(""));
+    .map(() => Array(totalColumns).fill(" "));
 
   arrayOfDigits.forEach(digit => {
     if (!isNumeric(digit)) {
@@ -47,7 +47,8 @@ export const printNumber = ({ digitSize, numberToPrint }, digitSpace) => {
   });
   for (let i = 0; i < totalRows; i++) {    
     for (let j = 0; j < totalColumns; j++) {
-      process.stdout.write(matrixToPrint[i][j]);  //console.log(matrixToPrint[i][j]); <-- aqui se aprecia, pero la consola del node elimina los espacios :(
-    }    
+      process.stdout.write(matrixToPrint[i][j]);
+    }
+    console.log();
   }
 };

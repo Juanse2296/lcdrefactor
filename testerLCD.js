@@ -1,8 +1,8 @@
 import readline from "readline";
-import { processCommand } from "./processCommand";
-import { printNumber } from './impresorLCD';
 import chalk from "chalk";
-import { isEmpty, isNumber } from "./helpers";
+import { processCommand } from "./src/processCommand";
+import { printNumber } from './src/impresorLCD';
+import { isEmpty, isNumber } from "./src/helpers";
 
 const readLineInterface = readline.createInterface({
   input: process.stdin,
