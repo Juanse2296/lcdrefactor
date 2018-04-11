@@ -3,16 +3,22 @@ const POSICION_Y = "Y";
 const CARACTER_VERTICAL = "|";
 const CARACTER_HORIZONTAL = "-";
 
-const addLine = (matrix, { optionA, optionB}, fixedPosition, digitSize, caracter) => {
+const addLine = (
+  matrix,
+  { optionA, optionB },
+  fixedPosition,
+  digitSize,
+  caracter
+) => {
   if (fixedPosition === POSICION_X) {
     for (let y = 1; y <= digitSize; y++) {
-      let value = optionB + y;
-     if(matrix[optionA])matrix[optionA][value] = caracter;
+      let value = Math.trunc(optionB) + y;
+      matrix[Math.trunc(optionA)][value] = caracter;
     }
   } else {
     for (let i = 1; i <= digitSize; i++) {
-      let value = optionA + i;
-      if(matrix[value])matrix[value][optionB] = caracter;
+      let value = Math.trunc(optionA) + i;
+      matrix[value][Math.trunc(optionB)] = caracter;
     }
   }
 };

@@ -37,9 +37,7 @@ const getDigitSpace = answer => {
 const processAllTheCommands = (commandsList, digitSpace) => {
   commandsList.forEach(command => {
     try {
-      const processResult = processCommand(command);    
-      console.log('hey', digitSpace);
-      
+      const processResult = processCommand(command);          
       printNumber(processResult, digitSpace);
     } catch (err) {
       console.error(err);

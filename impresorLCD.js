@@ -20,19 +20,9 @@ export const printNumber = ({ digitSize, numberToPrint }, digitSpace) => {
     five: {}
   };
 
-  matrixToPrint = new Array(totalRows);
-  for (let i = 0; i < totalRows; i++) {
-    matrixToPrint[i] = new Array(totalColumns);
-  }
-  /*
-  for (let i = 0; i < totalRows; i++) {
-    for (let j = 0; j < totalColumns; j++) {
-      matrixToPrint[i][j] = "-";
-    }
-  }*/
-
-  matrixToPrint=Array(totalRows).fill().map(()=>Array(totalColumns).fill(' '))
-  //console.log('khe',matrixToPrint);
+  matrixToPrint = Array(totalRows)
+    .fill()
+    .map(() => Array(totalColumns).fill("*"));
 
   arrayOfDigits.forEach(digit => {
     if (!isNumeric(digit)) {
@@ -55,10 +45,10 @@ export const printNumber = ({ digitSize, numberToPrint }, digitSpace) => {
       addDigitSegment(segment, fixedPositions, digitSize, matrixToPrint);
     });
   });
-
-  for (let i = 0; i < totalRows; i++) {
+  for (let i = 0; i < totalRows; i++) {    
     for (let j = 0; j < totalColumns; j++) {
-      console.log(matrixToPrint[i][j]);
+     console.log(matrixToPrint[i][j]);
     }
+   console.log();    
   }
 };
