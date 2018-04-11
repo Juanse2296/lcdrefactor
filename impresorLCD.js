@@ -273,46 +273,7 @@ class ImpresorLCD {
 	 * @param espacioDig
 	 *            Espacio Entre digitos
 	 */
-	procesar(comando,  espacioDig) {
-
-		let parametros;
-
-		let tam;
-
-		if (!comando.contains(",")) {
-			throw new Error("Cadena " + comando + " no contiene caracter ,");
-		}
-
-		// Se hace el split de la cadena
-		parametros = comando.split(",");
-
-		// Valida la cantidad de parametros
-		if (parametros.length > 2) {
-			throw new Error("Cadena " + comando + " contiene mas caracter ,");
-		}
-
-		// Valida la cantidad de parametros
-		if (parametros.length < 2) {
-			throw new Error("Cadena " + comando + " no contiene los parametros requeridos");
-		}
-
-		// Valida que el parametro size sea un numerico
-		if (isNumeric(parametros[0])) {
-			tam = Integer.parseInt(parametros[0]);
-
-			// se valida que el size este entre 1 y 10
-			if (tam < 1 || tam > 10) {
-				throw new Error("El parametro size [" + tam + "] debe estar entre 1 y 10");
-			}
-		} else {
-			throw new Error("Parametro Size [" + parametros[0] + "] no es un numero");
-		}
-
-		// Realiza la impresion del numero
-		imprimirNumero(tam, parametros[1], espacioDig);
-
-	}
-
+	
 	/**
 	 *
 	 * Metodo encargado de validar si una cadena es numerica
@@ -331,4 +292,48 @@ class ImpresorLCD {
 
 }
 
-export default ImpresorLCD;
+
+
+
+export const toProcess = (comando,  espacioDig) =>{
+
+
+		let parametros;
+
+		let tam;
+	
+		if (!comando.includes(",")) {
+			throw new Error("Cadena " + comando + " no contiene caracter ,");
+		}
+	
+		// Se hace el split de la cadena
+		parametros = comando.split(",");
+	
+		// Valida la cantidad de parametros
+		if (parametros.length > 2) {
+			throw new Error("Cadena " + comando + " contiene mas caracter ,");
+		}
+	
+		// Valida la cantidad de parametros
+		if (parametros.length < 2) {
+			throw new Error("Cadena " + comando + " no contiene los parametros requeridos");
+		}
+	
+		// Valida que el parametro size sea un numerico
+		if (isNumeric(parametros[0])) {
+			tam = Integer.parseInt(parametros[0]);
+	
+			// se valida que el size este entre 1 y 10
+			if (tam < 1 || tam > 10) {
+				throw new Error("El parametro size [" + tam + "] debe estar entre 1 y 10");
+			}
+		} else {
+			throw new Error("Parametro Size [" + parametros[0] + "] no es un numero");
+		}
+	
+
+	// Realiza la impresion del numero
+	//imprimirNumero(tam, parametros[1], espacioDig);
+
+}
+
