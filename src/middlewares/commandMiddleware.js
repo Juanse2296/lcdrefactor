@@ -4,7 +4,7 @@ export const getParameters = command => {
   if (!command.includes(",")) {
     throw new Error(`Cadena ${command} no contiene caracter ,`);
   }
-  return command.split(",");
+  return command.split(",").map((item) => item.trim());
 };
 
 export const validateParameters = (parameters, command) => {
@@ -14,6 +14,7 @@ export const validateParameters = (parameters, command) => {
   if (parameters.length < 2) {
     throw new Error(`Cadena ${command} no contiene los parametros requeridos`);
   }
+  return true;
 };
 
 export const getDigitSize = commandParameter => {
@@ -30,6 +31,7 @@ export const validateDigitSize = digitSize => {
       "El parametro size [" + digitSize + "] debe estar entre 1 y 10"
     );
   }
+  return true;
 };
 
 export const getDigitSpace = answer => {

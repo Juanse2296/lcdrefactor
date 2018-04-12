@@ -50,6 +50,4 @@ export const printResult = ({matrixToPrint, totalRows, totalColumns}) => {
     }
     console.log();
   }
-  console.log(message('Terminado, intenta de nuevo :)'));
-  process.exit()
 };
