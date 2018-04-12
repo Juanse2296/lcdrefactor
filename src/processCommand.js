@@ -1,13 +1,13 @@
-
 import { isNumeric } from "./helpers";
-import { error } from './middlewares/consoleMessage';
+import { error } from "./middlewares/consoleMessage";
+import { askForInformation } from './comandLineReader';
 import {
   getParameters,
   validateParameters,
   getDigitSize,
   validateDigitSize
 } from "./middlewares/commandMiddleware";
-import { printNumber } from "./impresorLCD";
+import { generateDigitsToPrint, printResult } from "./impresorLCD";
 
 export const processCommand = command => {
   try {
@@ -22,10 +22,14 @@ export const processCommand = command => {
 };
 
 export const processAllTheCommands = (commandsList, digitSpace) => {
-  commandsList.forEach(command => {
+  commandsList.forEach(async command => {
     try {
       const processResult = processCommand(command);
-      printNumber(processResult, digitSpace);
+      const digitsToprint =  generateDigitsToPrint(
+        processResult,
+        digitSpace
+      );   
+      printResult(digitsToprint);
     } catch (err) {
       console.error(error("Error: ", err.message));
     }

@@ -1,98 +1,60 @@
 const POSICION_X = "X";
 const POSICION_Y = "Y";
-const CARACTER_VERTICAL = "|";
-const CARACTER_HORIZONTAL = "-";
 
-const addLine = (
-  matrix,
-  { optionA, optionB },
-  fixedPosition,
-  digitSize,
-  caracter
-) => {
-  if (fixedPosition === POSICION_X) {
-    for (let y = 1; y <= digitSize; y++) {
-      let value = Math.trunc(optionB) + y;
-      matrix[Math.trunc(optionA)][value] = caracter;
-    }
-  } else {
-    for (let i = 1; i <= digitSize; i++) {
-      let value = Math.trunc(optionA) + i;
-      matrix[value][Math.trunc(optionB)] = caracter;
+export const addLine = (matrix, { fixedPosition, orientation }, digitSize) => {
+  const CARACTER_VERTICAL = "|";
+  const CARACTER_HORIZONTAL = "-";
+  for (let i = 1; i <= digitSize; i++) {
+    let value = {};
+    if (orientation === POSICION_X) {
+      value = Math.trunc(fixedPosition.optionB) + i;
+      matrix[Math.trunc(fixedPosition.optionA)][value] = CARACTER_HORIZONTAL;
+    } else {
+      value = Math.trunc(fixedPosition.optionA) + i;
+      matrix[value][Math.trunc(fixedPosition.optionB)] = CARACTER_VERTICAL;
     }
   }
 };
 
-export const addDigitSegment = (
-  segmentNumber,
-  fixedPosition,
-  digitSize,
-  matrixToPrint
-) => {
+export const generateSegment = (segmentNumber, fixedPosition) => {
   switch (segmentNumber) {
     case 1:
-      addLine(
-        matrixToPrint,
-        fixedPosition.one,
-        POSICION_Y,
-        digitSize,
-        CARACTER_VERTICAL
-      );
-      break;
+      return {
+        fixedPosition: fixedPosition.one,
+        orientation: POSICION_Y
+      };
     case 2:
-      addLine(
-        matrixToPrint,
-        fixedPosition.two,
-        POSICION_Y,
-        digitSize,
-        CARACTER_VERTICAL
-      );
-      break;
+      return {
+        fixedPosition: fixedPosition.two,
+        orientation: POSICION_Y
+      };
     case 3:
-      addLine(
-        matrixToPrint,
-        fixedPosition.five,
-        POSICION_Y,
-        digitSize,
-        CARACTER_VERTICAL
-      );
-      break;
+      return {
+        fixedPosition: fixedPosition.five,
+        orientation: POSICION_Y
+      };
     case 4:
-      addLine(
-        matrixToPrint,
-        fixedPosition.four,
-        POSICION_Y,
-        digitSize,
-        CARACTER_VERTICAL
-      );
-      break;
+      return {
+        fixedPosition: fixedPosition.four,
+        orientation: POSICION_Y
+      };
     case 5:
-      addLine(
-        matrixToPrint,
-        fixedPosition.one,
-        POSICION_X,
-        digitSize,
-        CARACTER_HORIZONTAL
-      );
-      break;
+      return {
+        fixedPosition: fixedPosition.one,
+        orientation: POSICION_X
+      };
+
     case 6:
-      addLine(
-        matrixToPrint,
-        fixedPosition.two,
-        POSICION_X,
-        digitSize,
-        CARACTER_HORIZONTAL
-      );
-      break;
+      return {
+        fixedPosition: fixedPosition.two,
+        orientation: POSICION_X
+      };
+
     case 7:
-      addLine(
-        matrixToPrint,
-        fixedPosition.three,
-        POSICION_X,
-        digitSize,
-        CARACTER_HORIZONTAL
-      );
-      break;
+      return {
+        fixedPosition: fixedPosition.three,
+        orientation: POSICION_X
+      };
     default:
       break;
   }
