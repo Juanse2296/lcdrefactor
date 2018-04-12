@@ -4,3 +4,4 @@ export const error = chalk.bold.red;
 export const warning = chalk.keyword('orange');
 export const message = chalk.bold.cyan;
 export const notify = chalk.bold.magenta;
+export const result = chalk.bold.black.bgWhite;
