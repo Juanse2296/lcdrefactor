@@ -1,78 +1,30 @@
+import { filterItems } from "./helpers";
+
+const segmentArray = [1, 2, 3, 4, 5, 6, 7];
+
 export const addDigit = number => {
-  let segmentList = [];
   switch (number) {
     case 1:
-      segmentList.push(3);
-      segmentList.push(4);
-      break;
+      return filterItems([1, 2, 5, 6, 7], segmentArray);
     case 2:
-      segmentList.push(5);
-      segmentList.push(3);
-      segmentList.push(6);
-      segmentList.push(2);
-      segmentList.push(7);
-      break;
+      return filterItems([1, 4], segmentArray);
     case 3:
-      segmentList.push(5);
-      segmentList.push(3);
-      segmentList.push(6);
-      segmentList.push(4);
-      segmentList.push(7);
-      break;
+      return filterItems([1, 2], segmentArray);
     case 4:
-      segmentList.push(1);
-      segmentList.push(6);
-      segmentList.push(3);
-      segmentList.push(4);
-      break;
+      return filterItems([2, 5, 7], segmentArray);
     case 5:
-      segmentList.push(5);
-      segmentList.push(1);
-      segmentList.push(6);
-      segmentList.push(4);
-      segmentList.push(7);
-      break;
+      return filterItems([2, 3], segmentArray);
     case 6:
-      segmentList.push(5);
-      segmentList.push(1);
-      segmentList.push(6);
-      segmentList.push(2);
-      segmentList.push(7);
-      segmentList.push(4);
-      break;
+      return filterItems([3], segmentArray);
     case 7:
-      segmentList.push(5);
-      segmentList.push(3);
-      segmentList.push(4);
-      break;
+      return filterItems([1, 2, 6, 7], segmentArray);
     case 8:
-      segmentList.push(1);
-      segmentList.push(2);
-      segmentList.push(3);
-      segmentList.push(4);
-      segmentList.push(5);
-      segmentList.push(6);
-      segmentList.push(7);
-      break;
+      return segmentArray;
     case 9:
-      segmentList.push(1);
-      segmentList.push(3);
-      segmentList.push(4);
-      segmentList.push(5);
-      segmentList.push(6);
-      segmentList.push(7);
-      break;
+      return filterItems([2], segmentArray);
     case 0:
-      segmentList.push(1);
-      segmentList.push(2);
-      segmentList.push(3);
-      segmentList.push(4);
-      segmentList.push(5);
-      segmentList.push(7);
-      break;
+      return filterItems([6], segmentArray);
     default:
       break;
   }
-
-  return segmentList;
 };
